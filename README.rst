@@ -47,7 +47,7 @@ generic views (and mixins)::
     from rest_framework_bulk import (
         BulkListSerializer,
         BulkSerializerMixin,
-        ListBulkCreateUpdateDestroyAPIView,
+        BulkModelViewSet,
     )
 
     class FooSerializer(BulkSerializerMixin, ModelSerializer):
@@ -56,7 +56,7 @@ generic views (and mixins)::
             # only necessary in DRF3
             list_serializer_class = BulkListSerializer
 
-    class FooView(ListBulkCreateUpdateDestroyAPIView):
+    class FooView(BulkModelViewSet):
         queryset = FooModel.objects.all()
         serializer_class = FooSerializer
 
